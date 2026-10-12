@@ -1,0 +1,12 @@
+fredapi>=0.5.2
+pandas>=2.0
+numpy>=1.26
+pyarrow>=14.0
+plotly>=5.20
+streamlit>=1.50
+python-dotenv>=1.0
+requests>=2.31
+matplotlib>=3.8
+beautifulsoup4>=4.12
+lxml>=5.0
+anthropic>=0.125,<1   # optional (Claude tone/web search); 1.x needs Python>=3.10

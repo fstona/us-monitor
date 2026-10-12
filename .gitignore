@@ -1,0 +1,17 @@
+# Secrets — never commit
+.env
+.streamlit/secrets.toml
+
+# Downloaded data (rebuilt by "Refresh all data"; some FRED series, e.g. ICE BofA, can't be redistributed)
+data/
+
+# Python
+.venv/
+.venv-win/
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# OS
+.DS_Store

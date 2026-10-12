@@ -1,0 +1,20 @@
+key,name,full_name,position,institution,seat,hawk_itc,interim
+bowman,Bowman,Michelle W. Bowman,Vice Chair for Supervision,Board,board,-1.00,0
+jefferson,Jefferson,Philip N. Jefferson,Vice Chair,Board,board,-0.90,0
+powell,Powell,Jerome H. Powell,Governor,Board,board,-0.80,0
+williams,Williams,John C. Williams,President,New York,new_york,-0.80,0
+paulson,Paulson,Anna Paulson,President,Philadelphia,philadelphia,-0.80,0
+daly,Daly,Mary C. Daly,President,San Francisco,san_francisco,-0.50,0
+waller,Waller,Christopher J. Waller,Governor,Board,board,0.00,0
+barr,Barr,Michael S. Barr,Governor,Board,board,0.00,0
+venable,Venable,Venable,Interim President,Atlanta,atlanta,0.00,1
+cook,Cook,Lisa D. Cook,Governor,Board,board,0.00,0
+warsh,Warsh,Kevin Warsh,Chair,Board,board,0.00,0
+goolsbee,Goolsbee,Austan D. Goolsbee,President,Chicago,chicago,0.00,0
+barkin,Barkin,Thomas I. Barkin,President,Richmond,richmond,0.00,0
+collins,Collins,Susan M. Collins,President,Boston,boston,0.00,0
+musalem,Musalem,Alberto G. Musalem,President,St. Louis,st_louis,0.30,0
+kashkari,Kashkari,Neel Kashkari,President,Minneapolis,minneapolis,0.50,0
+logan,Logan,Lorie K. Logan,President,Dallas,dallas,0.50,0
+schmid,Schmid,Jeffrey R. Schmid,President,Kansas City,kansas_city,0.50,0
+hammack,Hammack,Beth M. Hammack,President,Cleveland,cleveland,0.50,0
