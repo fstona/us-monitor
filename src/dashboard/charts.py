@@ -95,11 +95,14 @@ def multiline(
     clip: float | None = None,
     latest_in_legend: bool = True,
     dashed: tuple[str, ...] = (),
+    projections: dict[str, pd.Series] | None = None,
 ) -> go.Figure:
     """Plot several series on one set of axes (the 'integrated' chart).
 
     ``clip``: quantile to trim from each tail of the y-range (e.g. 0.02).
     ``dashed``: labels to draw dashed (e.g. a nowcast or a scenario).
+    ``projections``: label → 2-point series (last actual, projected) drawn as a
+    dotted extension in the same colour (used for the PCE nowcast).
     """
     fig = base_fig(title, yaxis_title)
     suffix = "%" if "%" in yaxis_title else ""
@@ -111,9 +114,18 @@ def multiline(
         if s.empty:
             continue
         name = f"{label}: {fmt_value(float(s.iloc[-1]), suffix)}" if latest_in_legend else label
+        color = PALETTE[len(plotted) % len(PALETTE)]
         fig.add_trace(go.Scatter(x=s.index, y=s.values, mode="lines", name=name,
-                                 line=dict(dash="dash") if label in dashed else None))
+                                 line=dict(color=color, dash="dash" if label in dashed else None)))
         plotted.append(s.to_numpy(dtype="float64"))
+        p = (projections or {}).get(label)
+        if p is not None and len(p) == 2 and p.notna().all():
+            fig.add_trace(go.Scatter(
+                x=p.index, y=p.values, mode="lines+markers", showlegend=True,
+                name=f"{label} — nowcast {p.index[-1]:%b}: {fmt_value(float(p.iloc[-1]), suffix)}",
+                line=dict(color=color, dash="dot", width=2),
+                marker=dict(symbol=["circle", "circle-open"], size=[0, 10], color=color,
+                            line=dict(width=2, color=color))))
     if recession:
         add_recession_shading(fig, start)
     for y, txt in (hlines or []):

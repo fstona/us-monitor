@@ -14,6 +14,8 @@ from pathlib import Path
 # Make the project importable when launched via `streamlit run`.
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
+import base64
+
 import streamlit as st
 
 from src import data, store
@@ -21,7 +23,9 @@ from src.dashboard import ui
 from src.dashboard.tabs import (activity, credit, fedspeak, fiscal, fx, inflation, labor,
                                 money, overview, policy, rates)
 
-st.set_page_config(page_title="US Monitor", page_icon="🇺🇸", layout="wide")
+# Flag as an image, not the 🇺🇸 emoji: Windows doesn't draw flag emojis (shows "US").
+FLAG = Path(__file__).resolve().parents[2] / "assets" / "us_flag.png"
+st.set_page_config(page_title="US Monitor", page_icon=str(FLAG), layout="wide")
 
 
 def sidebar() -> tuple[float, float, str]:
@@ -40,7 +44,10 @@ def sidebar() -> tuple[float, float, str]:
 
 
 def main() -> None:
-    st.title("🇺🇸 US Monitor")
+    flag = base64.b64encode(FLAG.read_bytes()).decode()
+    st.markdown(f'<h1><img src="data:image/png;base64,{flag}" style="height:0.75em;'
+                f'vertical-align:baseline;margin-right:0.35em;box-shadow:0 0 0 1px #ddd"'
+                f' alt="">US Monitor</h1>', unsafe_allow_html=True)
     st.caption("Rates · market prices · dollar · inflation · activity · fiscal — through the "
                "lens of the Fed's dual mandate.")
     r_star, rho, measure = sidebar()

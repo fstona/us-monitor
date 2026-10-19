@@ -11,7 +11,7 @@ with the analyses from Chair Warsh's Jackson Hole 2026 keynote (`Warsh_dash`).
 |---|---|
 | **Overview** | Snapshot by area · rule benchmark · release scorecard · ★ Warsh checklist |
 | **Fed Speakers** | 19 participants: ITC hawk scale, speech tone (90d), latest remarks, voter ✓/✗ for 3 years · next-7-days calendar · blackout · speech feed with summaries |
-| **Inflation** | Level, 12m/6m/3m momentum, trimmed-mean/median, ★ breadth (BEA diffusion), three buckets, commodities, expectations |
+| **Inflation** | **PCE nowcast** for next month (core & headline, stage, block contributions, backtest error; dotted projections on the charts) · Level, 12m/6m/3m momentum, trimmed-mean/median, ★ breadth (BEA diffusion), three buckets, commodities, expectations |
 | **Labor** | Payrolls & claims, Michaillat–Saez tightness, Beveridge curve, supply, wages & ULC |
 | **Activity** | GDP & GDPNow, ★ PDFP, capex (AI), consumer, industry, housing, profits |
 | **Rates** | Real policy rate vs r*, what markets price (2y − FF), curve, 10y = real + breakeven, term premium |

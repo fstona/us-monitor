@@ -15,3 +15,6 @@ __pycache__/
 
 # OS
 .DS_Store
+
+# Personal spec notes (kept local)
+nowcast_pce_spec.md

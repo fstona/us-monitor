@@ -50,7 +50,14 @@ dashboard ─> ui.load ─> data.get_series ─> store            (reading never
   (`metadata.parquet`). The dashboard only *reads* it (`data.get_series`);
   data changes only via `data.refresh(ids)` — the per-tab buttons, the
   sidebar "Refresh all data" button, or `python -m src.jobs.ingest` (for a
-  scheduler). A failed download leaves the stored series untouched. Buttons
+  scheduler). A failed download leaves the stored series untouched.
+  **Download only what changed:** `refresh` first reads FRED's last-updated stamp
+  (one light call) and skips the observations if it matches the stored one; the
+  BEA diffusion is recomputed only when a new PCE month exists, from the last 3
+  years merged into the stored history. `bea.fetch_table` keeps a 10-minute cache
+  so one click shares the U20404 table between the diffusion and the nowcast.
+  Callers pass everything they need to ONE `refresh` call (the Inflation button
+  adds `nowcast.run.FRED_INPUTS`, then runs the nowcast with `refresh_inputs=False`). Buttons
   appear only when `FRED_API_KEY` is set, so a key-less deployment (e.g.
   Databricks app with `US_MONITOR_STORE_PATH` on a UC Volume) is read-only.
   Never call `fredapi`/BEA from the dashboard or transforms.
@@ -104,6 +111,58 @@ dashboard ─> ui.load ─> data.get_series ─> store            (reading never
   `fomc_meetings`, `fedspeak_status` parquet tables to STORE_PATH.
 - The `anthropic` SDK is pinned `<1` because the venv is Python 3.9 (1.x needs
   3.10+). Rebuild the venv on 3.10+ before upgrading.
+
+## PCE nowcast (spec: `nowcast_pce_spec.md`)
+
+Bottom-up CPI/PPI → PCE bridge for next month's headline and core PCE (m/m,
+first print). Lives inside the **Inflation** tab (section at the top + dotted
+projections on the PCE charts).
+
+- **Work/home split.** The live engine is in the repo (`src/nowcast/`); the
+  research (concordance building, validation, backtest) stays on the Mac in
+  `../us-monitor-lab/nowcast/` (not versioned). Only final artifacts cross over,
+  all in `reference/`: `nowcast_concordance.csv` (224 PCE leaf lines → source),
+  `nowcast_seasonal_factors.csv`, `nowcast_bias.csv`, `nowcast_backtest_metrics.csv`,
+  `nowcast_line_models.csv`.
+  To change the model: edit/run in the lab (`concordance_build.py`, `validate.py`,
+  `backtest.py`, `export.py`), then commit the reference files.
+- **Runs only on new data.** `nowcast.run.update()` checks the latest CPI/PPI
+  month (one BLS query, bellwethers in the concordance) and the latest PCE month
+  in the store; same vintage → no recompute. Called by the Inflation tab's refresh,
+  "Refresh all data" and `jobs.ingest` (via `safe_update`, which never raises).
+  Each run appends to the store table `nowcast_runs`; raw inputs are kept in
+  `data/nowcast/snapshots/` (real-time track record).
+- **Stages:** 0 prior (trailing-12m mean m/m per line; gasoline line from weekly
+  retail gasoline) · 1 CPI · 2 CPI+PPI (PPI-only = reported as stage 0). Each
+  update rebuilds the target month's **path** — one row per release (last PCE →
+  first of CPI/PPI → both), dated with FRED's release stamps — so the chart shows
+  the nowcast after each release even if you refresh only once.
+- **Line models** (`reference/nowcast_line_models.csv`, from `lab/line_models.py`,
+  validated out of sample): hospitals and air transport = scaled PPI (BEA passes
+  ~75% / ~61% through); imputed banking (line 255) = ΔT-bill, ΔFF; NPISH (342) =
+  AHE m/m (from stage 1, when the jobs report is out). Inputs are FRED series in
+  the store, refreshed by `update()` itself (`FRED_INPUTS`).
+- **Error budget** (`lab/error_decomp.py`): about half of the stage-2 error vs the
+  first print is BEA's own later revision (revised − first ≈ 6 bps RMSE), so R² of
+  the core cannot go much higher with this target. Portfolio management is the
+  largest single line error vs *revised* data but does not improve vs the first
+  print with equities or PPI lags — it is revision noise.
+- **Model choices came from the backtest** (2015+, first-print target, ex Covid):
+  NSA sources (all PPI services, NSA-only CPI items) seasonally adjusted with
+  calendar-month factors — without it, adding the PPI *worsens* the nowcast;
+  prior = 12m mean; bias correction by stage. Core RMSFE ≈ 6.3 bps at stage 2 (R² 0.73).
+- **Gotchas:** BEA's API gives no line hierarchy → leaves come from BEA's
+  `SeriesRegister.txt` parents ("Less:" lines flip their descendants' sign).
+  Every BLS ID verified in the official catalogs (`bls.catalog`, needs
+  `BLS_CONTACT_EMAIL`). CPI legal services was discontinued (Oct 2025) → PPI proxy.
+  Portfolio management PPI = 523940-1 + 523940-2 (the aggregate only starts 2022).
+  Without `BLS_API_KEY` the BLS allows 25 queries/day — enough for one or two
+  nowcast refreshes; get the free key.
+- The dashboard shows only the open target month (no past-month comparisons — Filipe
+  prefers it clean).
+- **Not yet:** EIA client (gasoline comes from FRED GASREGW, stored like any series, which republishes
+  EIA's weekly price with ~1 day lag; switch when an EIA key exists), market-based
+  PCE, reconstructing real-time CPI seasonal factors.
 
 ## Chart conventions (from both projects)
 

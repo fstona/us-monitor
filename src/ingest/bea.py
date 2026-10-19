@@ -24,12 +24,33 @@ PRICE_TABLE = "U20404"
 DIFFUSION_IDS = {"BEA_PCE_DIFF12": "share_12m", "BEA_PCE_DIFF6": "share_6m"}
 
 
-def _prices(table: str = PRICE_TABLE) -> pd.DataFrame:
+_CACHE: dict = {}
+CACHE_SECONDS = 600   # one refresh click reuses a table (diffusion + nowcast), never across days
+
+
+def recent_years(n: int) -> str:
+    y = pd.Timestamp.today().year
+    return ",".join(str(y - k) for k in range(n - 1, -1, -1))
+
+
+def fetch_table(table: str, year: str = "ALL") -> pd.DataFrame:
+    """Monthly NIPA underlying-detail table, long format:
+    SeriesCode, LineNumber, LineDescription, date, value.
+    U20404 = PCE price indexes, U20405 = PCE nominal expenditures ($mn SAAR)."""
+    hit = _CACHE.get((table, year))
+    if hit and (pd.Timestamp.now() - hit[0]).total_seconds() < CACHE_SECONDS:
+        return hit[1].copy()
+    df = _download_table(table, year)
+    _CACHE[(table, year)] = (pd.Timestamp.now(), df)
+    return df.copy()
+
+
+def _download_table(table: str, year: str) -> pd.DataFrame:
     if not config.BEA_API_KEY:
         raise RuntimeError("BEA_API_KEY is not set in us-monitor/.env.")
     params = {"UserID": config.BEA_API_KEY, "method": "GetData",
               "DatasetName": "NIUnderlyingDetail", "TableName": table,
-              "Frequency": "M", "Year": "ALL", "ResultFormat": "JSON"}
+              "Frequency": "M", "Year": year, "ResultFormat": "JSON"}
     r = requests.get(BEA_URL, params=params, timeout=120)
     r.raise_for_status()
     payload = r.json()["BEAAPI"]["Results"]
@@ -38,16 +59,17 @@ def _prices(table: str = PRICE_TABLE) -> pd.DataFrame:
     d = pd.DataFrame(payload["Data"])
     d["value"] = pd.to_numeric(d["DataValue"].astype(str).str.replace(",", ""), errors="coerce")
     d["date"] = pd.to_datetime(d["TimePeriod"].str.replace("M", "-") + "-01", errors="coerce")
-    return d.dropna(subset=["date"])[["SeriesCode", "date", "value"]]
+    d["LineNumber"] = d["LineNumber"].astype(int)
+    return d.dropna(subset=["date"])[["SeriesCode", "LineNumber", "LineDescription", "date", "value"]]
 
 
 def fetch_diffusion(threshold: float = config.DIFFUSION_THRESHOLD,
-                    include_codes: set[str] | None = None) -> pd.DataFrame:
+                    include_codes: set[str] | None = None, years: str = "ALL") -> pd.DataFrame:
     """Share (%) of PCE components with price growth above ``threshold``.
 
     Returns columns ``share_12m`` (y/y) and ``share_6m`` (6m annualized).
     """
-    px = _prices()
+    px = fetch_table(PRICE_TABLE, years)
     if include_codes:
         px = px[px["SeriesCode"].isin(include_codes)]
     px = px.pivot_table(index="date", columns="SeriesCode", values="value").sort_index()

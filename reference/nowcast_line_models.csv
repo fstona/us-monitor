@@ -1,0 +1,15 @@
+pce_line,kind,term,coef
+184,ppi_scaled,const,0.057045
+184,ppi_scaled,own,0.748782
+185,ppi_scaled,const,0.057027
+185,ppi_scaled,own,0.748866
+186,ppi_scaled,const,0.05701
+186,ppi_scaled,own,0.748971
+207,ppi_scaled,const,0.186268
+207,ppi_scaled,own,0.614448
+255,rates,const,0.244091
+255,rates,d_tbill,-0.428271
+255,rates,d_tbill_l1,0.012753
+255,rates,d_ff,1.481998
+342,wages,const,-0.088339
+342,wages,ahe_mm,1.06158

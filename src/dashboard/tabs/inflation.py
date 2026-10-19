@@ -6,6 +6,7 @@ import streamlit as st
 
 from src import config
 from src.dashboard import charts, ui
+from src.dashboard.tabs import pce_nowcast
 from src.dashboard.ui import TARGET, WARSH
 from src.transform import indicators, inflation
 
@@ -34,13 +35,19 @@ def render() -> None:
         st.caption("Deltas in red = further from target / re-accelerating. "
                    "6m below 12m means the trend is still converging.")
 
+    with ui.guard("PCE nowcast"):
+        pce_nowcast.section()
+    nc = pce_nowcast.current()
+    proj = lambda agg, tr: pce_nowcast.projection(agg, tr, nc)   # noqa: E731
+
     # --- Level --------------------------------------------------------------
     ui.section("1 · Realized inflation")
     with ui.guard("Realized inflation"):
         ui.plot(charts.multiline("Realized inflation (y/y %)", {
             "Core PCE": ui.yoy("PCEPILFE"), "Headline PCE": ui.yoy("PCEPI"),
             "Core CPI": ui.yoy("CPILFESL"), "Headline CPI": ui.yoy("CPIAUCSL"),
-        }, "%", start=start, hlines=TARGET))
+        }, "%", start=start, hlines=TARGET,
+            projections={"Core PCE": proj("core", "yoy"), "Headline PCE": proj("headline", "yoy")}))
 
     # --- Momentum -------------------------------------------------------------
     ui.section("2 · Momentum — the short window turns first",
@@ -51,12 +58,15 @@ def render() -> None:
     with c1, ui.guard("Headline PCE momentum"):
         ui.plot(charts.multiline(f"Headline PCE — 12m vs 6m ann. {WARSH}", {
             "PCE 12m": ui.yoy("PCEPI"), "PCE 6m ann.": ui.ann("PCEPI", 6),
-        }, "%", start=start, hlines=TARGET))
+        }, "%", start=start, hlines=TARGET,
+            projections={"PCE 12m": proj("headline", "yoy"), "PCE 6m ann.": proj("headline", "ann6")}))
     with c2, ui.guard("Core PCE momentum"):
         ui.plot(charts.multiline("Core PCE momentum cascade", {
             "Core PCE y/y": ui.yoy("PCEPILFE"), "6m ann.": ui.ann("PCEPILFE", 6),
             "3m ann.": ui.ann("PCEPILFE", 3),
-        }, "%", start=ui.since(5), hlines=TARGET))
+        }, "%", start=ui.since(5), hlines=TARGET,
+            projections={"Core PCE y/y": proj("core", "yoy"), "6m ann.": proj("core", "ann6"),
+                         "3m ann.": proj("core", "ann3")}))
 
     # --- Underlying -------------------------------------------------------------
     ui.section(f"3 · Underlying trend — trimmed-mean & median gauges {WARSH}",

@@ -33,6 +33,10 @@ def has_data() -> bool:
     return bool(_series_map())
 
 
+def has_series(series_id: str) -> bool:
+    return series_id in _series_map()
+
+
 def get_series(series_id: str) -> pd.Series:
     try:
         return _series_map()[series_id]
@@ -54,12 +58,13 @@ def get_metadata() -> pd.DataFrame:
 def save_series(series: dict[str, pd.Series], meta: pd.DataFrame) -> None:
     """Replace these series (and their metadata rows); keep everything else."""
     config.STORE_PATH.mkdir(parents=True, exist_ok=True)
-    new_obs = pd.concat([pd.DataFrame({"series_id": sid, "date": s.index, "value": s.values})
-                         for sid, s in series.items()], ignore_index=True)
-    if OBS.exists():
-        old = pd.read_parquet(OBS)
-        new_obs = pd.concat([old[~old["series_id"].isin(series)], new_obs], ignore_index=True)
-    new_obs.to_parquet(OBS, index=False)
+    if series:
+        new_obs = pd.concat([pd.DataFrame({"series_id": sid, "date": s.index, "value": s.values})
+                             for sid, s in series.items()], ignore_index=True)
+        if OBS.exists():
+            old = pd.read_parquet(OBS)
+            new_obs = pd.concat([old[~old["series_id"].isin(series)], new_obs], ignore_index=True)
+        new_obs.to_parquet(OBS, index=False)
 
     if META.exists():
         old = pd.read_parquet(META)

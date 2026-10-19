@@ -1,0 +1,13 @@
+aggregate,sample,stage,n,rmsfe_bps,mae_bps,bias_bps,r2,hit5,variant,period
+core,2015+ ex Covid 2020-21,0,113,10.598,8.052,2.02,0.239,0.407,"NSA sources SA; prior = 12m mean; line models (hospitals, air, imputed banking, NPISH); bias corrected",2015-06..2026-08
+core,2015+ ex Covid 2020-21,1,113,6.727,5.143,0.633,0.693,0.602,"NSA sources SA; prior = 12m mean; line models (hospitals, air, imputed banking, NPISH); bias corrected",2015-06..2026-08
+core,2015+ ex Covid 2020-21,2,113,6.268,5.1,0.42,0.734,0.54,"NSA sources SA; prior = 12m mean; line models (hospitals, air, imputed banking, NPISH); bias corrected",2015-06..2026-08
+core,2015+ incl. Covid,0,135,12.781,9.327,0.924,0.235,0.363,"NSA sources SA; prior = 12m mean; line models (hospitals, air, imputed banking, NPISH); bias corrected",2015-06..2026-08
+core,2015+ incl. Covid,1,135,7.991,5.685,0.725,0.701,0.585,"NSA sources SA; prior = 12m mean; line models (hospitals, air, imputed banking, NPISH); bias corrected",2015-06..2026-08
+core,2015+ incl. Covid,2,135,6.45,5.221,0.373,0.805,0.541,"NSA sources SA; prior = 12m mean; line models (hospitals, air, imputed banking, NPISH); bias corrected",2015-06..2026-08
+headline,2015+ ex Covid 2020-21,0,113,12.556,9.479,2.576,0.547,0.319,"NSA sources SA; prior = 12m mean; line models (hospitals, air, imputed banking, NPISH); bias corrected",2015-06..2026-08
+headline,2015+ ex Covid 2020-21,1,113,6.826,5.227,0.555,0.866,0.566,"NSA sources SA; prior = 12m mean; line models (hospitals, air, imputed banking, NPISH); bias corrected",2015-06..2026-08
+headline,2015+ ex Covid 2020-21,2,113,6.454,4.844,0.367,0.88,0.646,"NSA sources SA; prior = 12m mean; line models (hospitals, air, imputed banking, NPISH); bias corrected",2015-06..2026-08
+headline,2015+ incl. Covid,0,135,13.204,10.119,1.332,0.59,0.289,"NSA sources SA; prior = 12m mean; line models (hospitals, air, imputed banking, NPISH); bias corrected",2015-06..2026-08
+headline,2015+ incl. Covid,1,135,7.666,5.571,0.714,0.862,0.541,"NSA sources SA; prior = 12m mean; line models (hospitals, air, imputed banking, NPISH); bias corrected",2015-06..2026-08
+headline,2015+ incl. Covid,2,135,6.458,4.862,0.405,0.902,0.637,"NSA sources SA; prior = 12m mean; line models (hospitals, air, imputed banking, NPISH); bias corrected",2015-06..2026-08

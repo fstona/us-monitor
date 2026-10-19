@@ -18,6 +18,7 @@ import plotly.graph_objects as go
 import streamlit as st
 
 from src import config, data
+from src.nowcast import run as nowcast_run
 from src.transform import indicators, labor, rates
 
 TARGET = [(config.INFLATION_TARGET, "2% target")]
@@ -178,31 +179,35 @@ def series_status(series_ids: list[str]) -> pd.DataFrame:
 
 
 def refresh_all() -> None:
-    """Sidebar button: every catalog series + Fed-speak (≈6 min)."""
+    """Sidebar button: every catalog series + nowcast inputs + Fed-speak, one pass."""
     from src.jobs import fedspeak
-    ids = [s.id for s in config.SERIES]
+    ids = [s.id for s in config.SERIES] + nowcast_run.FRED_INPUTS
     bar = st.sidebar.progress(0.0, text="Refreshing all data…")
-    failures = data.refresh(ids, progress=lambda i, n, sid: bar.progress(
-        i / n, text=f"{sid} ({i + 1}/{n})"))
+    res = data.refresh(ids, progress=lambda i, n, sid: bar.progress(i / n, text=f"{sid} ({i + 1}/{n})"))
     bar.progress(1.0, text="Fed speakers…")
     fedspeak.run()
+    bar.progress(1.0, text="PCE nowcast…")
+    nowcast_msg = nowcast_run.safe_update(refresh_inputs=False)
     bar.empty()
     st.cache_data.clear()
-    st.session_state["_refresh_all_msg"] = (
-        f"Refreshed {len(ids) - len(failures)}/{len(ids)} series + Fed speakers"
-        + (f" — failed (kept previous data): {', '.join(failures)}" if failures else "."))
+    st.session_state["_refresh_all_msg"] = f"{res.summary()}. Fed speakers updated. {nowcast_msg}"
     st.rerun()
 
 
 def _refresh(name: str, ids: list[str]) -> None:
+    nowcast = name == "Inflation"           # new CPI/PPI/PCE → the nowcast recomputes itself
+    if nowcast:
+        ids = ids + nowcast_run.FRED_INPUTS  # one pass: the nowcast reuses what is downloaded here
     bar = st.progress(0.0, text=f"Refreshing {name}…")
-    failures = data.refresh(ids, progress=lambda i, n, sid: bar.progress(
+    res = data.refresh(ids, progress=lambda i, n, sid: bar.progress(
         i / n, text=f"Refreshing {name}: {sid} ({i + 1}/{n})"))
+    extra = ""
+    if nowcast:
+        bar.progress(1.0, text="PCE nowcast…")
+        extra = " " + nowcast_run.safe_update(refresh_inputs=False)
     bar.empty()
     st.cache_data.clear()
-    st.session_state[f"_refresh_msg_{name}"] = (
-        f"Refreshed {len(ids) - len(failures)}/{len(ids)} series"
-        + (f" — failed: {', '.join(failures)}" if failures else "."))
+    st.session_state[f"_refresh_msg_{name}"] = res.summary() + "." + extra
     st.rerun()
 
 
@@ -222,7 +227,7 @@ def tab_header(name: str, ids: list[str]) -> None:
         c[0].success(msg)
     if data.can_refresh() and c[1].button(
             "↻ Refresh this tab", key=f"refresh_{name}",
-            help=f"Re-download the {len(ids)} series used here from FRED/BEA (~1 s per series). "
+            help=f"Check the {len(ids)} series used here and download only those with new data. "
                  "If a download fails, the previous data is kept."):
         _refresh(name, ids)
 

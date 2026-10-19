@@ -1,0 +1,225 @@
+pce_line,pce_code,pce_name,block,in_core,sign,source_type,series_id,stage_available,notes
+7,DNDCRC,New domestic autos,core_goods,True,1,cpi,CUSR0000SS45011,cpi,New cars
+8,DNFCRC,New foreign autos,core_goods,True,1,cpi,CUSR0000SS45011,cpi,New cars
+10,LA001081,New domestic light trucks,core_goods,True,1,cpi,CUSR0000SS45021,cpi,New trucks
+11,LA001083,New foreign light trucks,core_goods,True,1,cpi,CUSR0000SS45021,cpi,New trucks
+14,DNETRC,Net transactions in used autos,core_goods,True,1,cpi,CUSR0000SETA02,cpi,Used cars and trucks
+15,DMARRC,Used auto margin,core_goods,True,1,cpi,CUSR0000SETA02,cpi,
+16,DREERC,Employee reimbursement,core_goods,True,1,cpi,CUSR0000SETA02,cpi,
+18,DUTNRC,Net transactions in used trucks,core_goods,True,1,cpi,CUSR0000SETA02,cpi,
+19,DUTMRC,Used truck margin,core_goods,True,1,cpi,CUSR0000SETA02,cpi,
+21,DTATRC,Tires,core_goods,True,1,cpi,CUSR0000SETC01,cpi,Tires
+22,DPAARC,Accessories and parts,core_goods,True,1,cpi,CUUR0000SETC02,cpi,Accessories other than tires (NSA only)
+25,DFNRRC,Furniture,core_goods,True,1,cpi,CUSR0000SEHJ,cpi,Furniture and bedding
+26,DCLFRC,"Clocks, lamps, lighting fixtures, and other household decorative items",core_goods,True,1,cpi,CUUR0000SEHL01,cpi,"Clocks, lamps, decorator items"
+27,DFLRRC,Carpets and other floor coverings,core_goods,True,1,cpi,CUUR0000SEHH01,cpi,Floor coverings
+28,DWCTRC,Window coverings,core_goods,True,1,cpi,CUSR0000SEHH02,cpi,Window coverings
+30,DMHARC,Major household appliances,core_goods,True,1,cpi,CUSR0000SEHK01,cpi,Major appliances
+31,DSEARC,Small electric household appliances,core_goods,True,1,cpi,CUSR0000SEHK02,cpi,Other appliances
+33,DCHNRC,Dishes and flatware,core_goods,True,1,cpi,CUUR0000SEHL03,cpi,Dishes and flatware
+34,DNECRC,Nonelectric cookware and tableware,core_goods,True,1,cpi,CUSR0000SEHL04,cpi,Nonelectric cookware
+36,DHDWRC,"Tools, hardware, and supplies",core_goods,True,1,cpi,CUSR0000SEHM01,cpi,"Tools, hardware"
+37,DLWNRC,Outdoor equipment and supplies,core_goods,True,1,cpi,CUSR0000SEHM02,cpi,Outdoor equipment
+41,DTVSRC,Televisions,core_goods,True,1,cpi,CUSR0000SERA01,cpi,Televisions
+42,DOVARC,Other video equipment,core_goods,True,1,cpi,CUSR0000SERA03,cpi,Other video equipment
+43,DAUDRC,Audio equipment,core_goods,True,1,cpi,CUSR0000SERA05,cpi,Audio equipment
+45,DRTDRC,"Audio discs, tapes, vinyl, and permanent digital downloads",core_goods,True,1,cpi,CUUR0000SERA06,cpi,Recorded music
+46,DOVERC,"Video discs, tapes, and permanent digital downloads",core_goods,True,1,cpi,CUUR0000SS31022,cpi,Video discs and other media
+47,DCAMRC,Photographic equipment,core_goods,True,1,cpi,CUSR0000SS61023,cpi,Photographic equipment
+49,DCPPRC,Personal computers/tablets and peripheral equipment,core_goods,True,1,cpi,CUSR0000SEEE01,cpi,"Computers, peripherals"
+50,DCPSRC,Computer software and accessories,core_goods,True,1,cpi,CUUR0000SEEE02,cpi,Computer software
+51,DOIPRC,"Calculators, typewriters, and other information processing equipment",core_goods,True,1,cpi,CUSR0000SEEE04,cpi,"Telephone hardware, calculators"
+52,DSPGRC,"Sporting equipment, supplies, guns, and ammunition (part of 80)",core_goods,True,1,cpi,CUSR0000SERC02,cpi,Sports equipment
+54,DMCYRC,Motorcycles,core_goods,True,1,cpi,CUSR0000SERC01,cpi,"Sports vehicles (handbook: new motorcycles, not published)"
+55,DBCYRC,Bicycles and accessories,core_goods,True,1,cpi,CUSR0000SERC01,cpi,
+57,DBOARC,Pleasure boats,core_goods,True,1,cpi,CUSR0000SERC01,cpi,
+58,DAIRRC,Pleasure aircraft,core_goods,True,1,proxy,CUSR0000SERC01,cpi,Pleasure aircraft
+59,DREVRC,Other recreational vehicles,core_goods,True,1,cpi,CUSR0000SERC01,cpi,
+60,DRBKRC,Recreational books (part of 90),core_goods,True,1,cpi,CUUR0000SERG02,cpi,Recreational books
+61,DMSCRC,Musical instruments (part of 80),core_goods,True,1,cpi,CUSR0000SERE03,cpi,Music instruments
+64,DJLYRC,Jewelry,core_goods,True,1,cpi,CUSR0000SEAG02,cpi,Jewelry
+65,DWTCRC,Watches,core_goods,True,1,cpi,CUSR0000SEAG01,cpi,Watches
+67,DTMERC,Therapeutic medical equipment,core_goods,True,1,cpi,CUUR0000SEMG,cpi,Medical equipment and supplies
+68,DEYERC,Corrective eyeglasses and contact lenses,core_goods,True,1,cpi,CUSR0000SEMC03,cpi,Eyeglasses and eye care
+69,DEBKRC,Educational books (96),core_goods,True,1,cpi,CUSR0000SEEA,cpi,Educational books and supplies
+70,DLUGRC,Luggage and similar personal items (part of 119),core_goods,True,1,cpi,CUSR0000SEGE,cpi,Misc personal goods
+71,DTCERC,Telephone and related communication equipment,core_goods,True,1,cpi,CUSR0000SEEE04,cpi,Telephone hardware
+77,DGRARC,Cereals,food,False,1,cpi,CUSR0000SEFA,cpi,
+78,DBAKRC,Bakery products,food,False,1,cpi,CUSR0000SEFB,cpi,
+80,DBEERC,Beef and veal,food,False,1,cpi,CUSR0000SEFC,cpi,
+81,DPORRC,Pork,food,False,1,cpi,CUSR0000SEFD,cpi,
+82,DMEARC,Other meats,food,False,1,cpi,CUSR0000SEFE,cpi,
+83,DPOURC,Poultry,food,False,1,cpi,CUSR0000SEFF,cpi,
+84,DFISRC,Fish and seafood,food,False,1,cpi,CUSR0000SEFG,cpi,
+86,DMILRC,Fresh milk,food,False,1,cpi,CUSR0000SEFJ01,cpi,Milk
+87,DDAIRC,Processed dairy products,food,False,1,cpi,CUSR0000SEFJ02|CUSR0000SEFJ03|CUSR0000SEFJ04,cpi,"Cheese, ice cream, other dairy"
+88,DGGSRC,Eggs,food,False,1,cpi,CUSR0000SEFH,cpi,
+89,DFATRC,Fats and oils,food,False,1,cpi,CUSR0000SEFS,cpi,
+91,DFRURC,Fruit (fresh),food,False,1,cpi,CUSR0000SEFK,cpi,
+92,DVEGRC,Vegetables (fresh),food,False,1,cpi,CUSR0000SEFL,cpi,
+93,DPFVRC,Processed fruits and vegetables,food,False,1,cpi,CUSR0000SEFM,cpi,
+94,DSWERC,Sugar and sweets,food,False,1,cpi,CUSR0000SEFR,cpi,
+95,DOFDRC,"Food products, not elsewhere classified",food,False,1,cpi,CUSR0000SEFT,cpi,
+97,DCTMRC,"Coffee, tea, and other beverage materials",food,False,1,cpi,CUSR0000SEFP,cpi,
+98,DJNBRC,"Mineral waters, soft drinks, and vegetable juices",food,False,1,cpi,CUSR0000SEFN,cpi,
+100,DLIQRC,Spirits,food,False,1,cpi,CUSR0000SEFW02,cpi,
+101,DWINRC,Wine,food,False,1,cpi,CUSR0000SEFW03,cpi,
+102,DMLTRC,Beer,food,False,1,cpi,CUSR0000SEFW01,cpi,
+103,DFFDRC,Food produced and consumed on farms (6),food,False,1,proxy,CUSR0000SAF11,cpi,Handbook: BEA composite of USDA prices
+106,DWGCRC,Women's and girls' clothing (10),core_goods,True,1,cpi,CUSR0000SAA2,cpi,
+107,DMBCRC,Men's and boys' clothing (11),core_goods,True,1,cpi,CUSR0000SAA1,cpi,
+108,DCICRC,Children's and infants' clothing (12),core_goods,True,1,cpi,CUSR0000SEAF,cpi,
+110,DCSMRC,Clothing materials,core_goods,True,1,cpi,CUSR0000SERE02,cpi,"Sewing machines, fabric"
+111,DMICRC,Standard clothing issued to military personnel,core_goods,True,1,proxy,CUSR0000SAA,cpi,Handbook: PPI apparel
+112,DSHURC,Shoes and other footwear,core_goods,True,1,cpi,CUSR0000SEAE,cpi,Footwear
+115,DGASRC,Gasoline and other motor fuel,energy,False,1,cpi,CUSR0000SETB,cpi,Motor fuel
+116,DLUBRC,Lubricants and fluids,energy,False,1,cpi,CUUR0000SS47021,cpi,"Motor oil, coolant"
+118,DOILRC,Fuel oil,energy,False,1,cpi,CUSR0000SEHE01,cpi,Fuel oil
+119,DLPFRC,Other fuels,energy,False,1,cpi,CUSR0000SEHE02,cpi,"Propane, kerosene, firewood"
+123,DRXDRC,Prescription drugs,core_goods,True,1,cpi,CUSR0000SEMF01,cpi,Prescription drugs
+124,DNRDRC,Nonprescription drugs,core_goods,True,1,cpi,CUSR0000SEMF02,cpi,Nonprescription drugs
+125,DOMPRC,Other medical products,core_goods,True,1,cpi,CUUR0000SEMG,cpi,Medical equipment and supplies
+127,DDOLRC,"Games, toys, and hobbies",core_goods,True,1,cpi,CUSR0000SS61011,cpi,"Toys, games"
+128,DPRPRC,Pets and related products,core_goods,True,1,cpi,CUSR0000SERB01,cpi,Pets and pet products
+129,DFLORC,"Flowers, seeds, and potted plants",core_goods,True,1,cpi,CUSR0000SEHL02,cpi,Indoor plants and flowers
+130,DFLMRC,Film and photographic supplies,core_goods,True,1,cpi,CUSR0000SERD01,cpi,Photographic supplies
+132,DCLERC,Household cleaning products,core_goods,True,1,cpi,CUSR0000SEHN01,cpi,
+133,DPAPRC,Household paper products,core_goods,True,1,cpi,CUUR0000SEHN02,cpi,
+134,DLINRC,Household linens,core_goods,True,1,cpi,CUSR0000SEHH03,cpi,Other linens
+135,DSEWRC,Sewing items,core_goods,True,1,cpi,CUSR0000SERE02,cpi,
+136,DMHPRC,Miscellaneous household products,core_goods,True,1,cpi,CUSR0000SEHN03,cpi,
+138,DOPHRC,"Hair, dental, shaving, and miscellaneous personal care products except electrical products",core_goods,True,1,cpi,CUUR0000SEGB01,cpi,
+139,DCOSRC,Cosmetic / perfumes / bath / nail preparations and implements,core_goods,True,1,cpi,CUUR0000SEGB02,cpi,
+140,DEAPRC,Electric appliances for personal care,core_goods,True,1,proxy,CUSR0000SEGB,cpi,Personal care products
+141,DTOBRC,Tobacco (127),core_goods,True,1,cpi,CUSR0000SEGA,cpi,Tobacco
+143,DMAGRC,Newspapers and periodicals,core_goods,True,1,cpi,CUUR0000SERG01,cpi,Newspapers and magazines
+144,DSTYRC,Stationery and miscellaneous printed materials,core_goods,True,1,cpi,CUSR0000SS33032,cpi,Stationery
+147,DARTRC,Government employees' expenditures abroad,core_goods,True,1,prior,,,Government employees abroad
+148,DARSRC,Private employees' expenditures abroad,core_goods,True,1,prior,,,Private employees abroad
+149,DREMRC,Less: Personal remittances in kind to nonresidents,core_goods,True,-1,prior,,,Less: remittances in kind
+155,DTMHRC,Tenant-occupied mobile homes,housing,True,1,cpi,CUSR0000SEHA,cpi,Rent
+157,DTSPRC,Tenant-occupied stationary homes,housing,True,1,cpi,CUSR0000SEHA,cpi,Rent (no nominal data recently)
+158,DTLDRC,Tenant landlord durables,housing,True,1,cpi,CUSR0000SEHA,cpi,Rent (no nominal data recently)
+159,LA000630,"Tenant-occupied, including landlord durables",housing,True,1,cpi,CUSR0000SEHA,cpi,Rent
+161,DOMHRC,Owner-occupied mobile homes,housing,True,1,cpi,CUSR0000SEHC01,cpi,OER
+162,DOSTRC,Owner-occupied stationary homes,housing,True,1,cpi,CUSR0000SEHC01,cpi,OER
+163,DFARRC,Rental value of farm dwellings (22),housing,True,1,proxy,CUSR0000SEHC01,cpi,Farm dwellings
+164,DGRHRC,Group housing (23),housing,True,1,proxy,CUSR0000SEHA,cpi,Group housing
+167,DWSMRC,Water supply and sewage maintenance,core_services,True,1,cpi,CUSR0000SEHG01,cpi,
+168,DREFRC,Garbage and trash collection,core_services,True,1,cpi,CUSR0000SEHG02,cpi,
+170,DELCRC,Electricity (27),energy,False,1,cpi,CUSR0000SEHF01,cpi,Electricity
+171,DGHERC,Natural gas (28),energy,False,1,cpi,CUSR0000SEHF02,cpi,Utility gas
+174,DPHYRC,Physician services (44),health,True,1,ppi,PCU6211--6211--,ppi,Offices of physicians
+175,DDENRC,Dental services (45),health,True,1,cpi,CUSR0000SEMC02,cpi,Dental services
+177,DHHCRC,Home health care,health,True,1,ppi,PCU621610621610,ppi,Home health care
+178,DMLBRC,Medical laboratories,health,True,1,ppi,PCU621511621511|PCU621512621512,ppi,Medical labs + diagnostic imaging
+180,DOMSRC,Specialty outpatient care facilities and health and allied services,health,True,1,proxy,CUSR0000SEMC04,cpi,Other medical professionals
+181,DOMORC,All other professional medical services,health,True,1,proxy,CUSR0000SEMC04,cpi,
+184,DNPHRC,Nonprofit hospitals' services to households,health,True,1,ppi,PCU622---622---,ppi,Hospitals
+185,DFPHRC,Proprietary hospitals,health,True,1,ppi,PCU622---622---,ppi,
+186,DGVHRC,Government hospitals,health,True,1,ppi,PCU622---622---,ppi,
+188,DNPNRC,Nonprofit nursing homes' services to households,health,True,1,ppi,PCU623110623110,ppi,Nursing care facilities
+189,DFPNRC,Proprietary and government nursing homes,health,True,1,ppi,PCU623110623110,ppi,
+192,DVMRRC,Motor vehicle maintenance and repair (60),core_services,True,1,cpi,CUSR0000SETD,cpi,MV maintenance and repair
+195,DALERC,Auto leasing,core_services,True,1,cpi,CUSR0000SETA03,cpi,Leased cars and trucks
+196,DTLERC,Truck leasing,core_services,True,1,cpi,CUSR0000SETA03,cpi,
+197,DMVRRC,Motor vehicle rental,core_services,True,1,cpi,CUSR0000SETA04,cpi,Car and truck rental
+198,DPFTRC,Parking fees and tolls,core_services,True,1,cpi,CUSR0000SS52051,cpi,Parking fees and tolls
+201,DIRRRC,Railway transportation,core_services,True,1,cpi,CUSR0000SETG02,cpi,Other intercity
+203,DIBURC,Intercity buses,core_services,True,1,cpi,CUSR0000SETG02,cpi,
+204,DTAXRC,Taxicabs and ride sharing services,core_services,True,1,cpi,CUUR0000SETG03,cpi,Intracity transportation
+205,DIMTRC,Intracity mass transit,core_services,True,1,cpi,CUUR0000SS53031,cpi,Intracity mass transit
+206,DORTRC,Other road transportation service,core_services,True,1,proxy,CUSR0000SETG02,cpi,
+207,DAITRC,Air transportation (64),core_services,True,1,ppi,PCU481111481111,ppi,Scheduled passenger air (NSA)
+208,DWATRC,Water transportation (65),core_services,True,1,cpi,CUSR0000SS53023,cpi,Ship fare
+211,DMDFRC,Membership clubs and participant sports centers,core_services,True,1,cpi,CUSR0000SERF01,cpi,"Club membership, participant sports"
+212,DORSRC,"Amusement parks, campgrounds, and related recreational services",core_services,True,1,proxy,CUSR0000SERF02,cpi,Admissions
+214,DMOVRC,Motion picture theaters,core_services,True,1,cpi,CUSR0000SS62031,cpi,"Movies, theaters, concerts"
+215,DLIGRC,"Live entertainment, excluding sports",core_services,True,1,cpi,CUSR0000SS62031,cpi,
+216,DSPERC,Spectator sports,core_services,True,1,cpi,CUSR0000SS62032,cpi,Sporting events
+217,DMUSRC,Museums and libraries,core_services,True,1,proxy,CUSR0000SERF02,cpi,
+219,DCTVRC,"Cable, satellite, and other live television services",core_services,True,1,cpi,CUSR0000SERA02,cpi,"Cable, satellite"
+220,DFDVRC,Photo processing,core_services,True,1,cpi,CUUR0000SERD02,cpi,Photo processing
+221,DPICRC,Photo studios,core_services,True,1,cpi,CUUR0000SERD02,cpi,
+222,DAPIRC,"Repair and rental of audio-visual, photographic, and information processing equipment",core_services,True,1,proxy,CUSR0000SERAS,cpi,Video and audio services
+224,LA000233,Video streaming and rental,core_services,True,1,cpi,CUUR0000SERA04,cpi,Video subscriptions
+225,LA000232,Audio streaming and radio services (including satellite radio),core_services,True,1,cpi,CUUR0000SERA06,cpi,Music subscriptions
+227,DCASRC,Casino gambling,core_services,True,1,prior,,,Casino gambling
+228,DLOTRC,Lotteries,core_services,True,1,prior,,,Lotteries
+229,DPARRC,Pari-mutuel net receipts,core_services,True,1,prior,,,Pari-mutuel
+231,DVETRC,Veterinary and other services for pets,core_services,True,1,cpi,CUSR0000SERB02,cpi,Pet services incl. veterinary
+232,DHOLRC,Package tours,core_services,True,1,prior,,,Package tours
+233,DRRERC,Maintenance and repair of recreational vehicles and sports equipment,core_services,True,1,proxy,CUSR0000SETD,cpi,Repair of rec. vehicles
+239,DESLRC,Elementary and secondary school lunches,core_services,True,1,cpi,CUSR0000SSFV031A,cpi,School lunches
+240,DHSLRC,Higher education school lunches,core_services,True,1,cpi,CUSR0000SEFV03,cpi,Food at schools
+242,DMLSRC,Meals at limited service eating places,core_services,True,1,cpi,CUUR0000SEFV02,cpi,Limited service meals
+243,DMOERC,Meals at other eating places,core_services,True,1,cpi,CUSR0000SEFV01,cpi,Full service meals
+244,DMDPRC,Meals at drinking places,core_services,True,1,proxy,CUSR0000SEFV,cpi,Food away from home
+245,DAPMRC,Alcohol in purchased meals,core_services,True,1,cpi,CUSR0000SEFX,cpi,Alcohol away from home
+247,DCFDRC,Food supplied to civilians,core_services,True,1,cpi,CUSR0000SEFV01,cpi,Civilians: full service meals (handbook)
+248,DMFDRC,Food supplied to military,core_services,True,1,cpi,CUUR0000SEFV02,cpi,Military: limited service meals (handbook)
+250,DHOTRC,Hotels and motels,core_services,True,1,cpi,CUSR0000SEHB02,cpi,Hotels and motels
+251,DSCHRC,Housing at schools,core_services,True,1,cpi,CUSR0000SEHB01,cpi,Lodging at school
+255,DIMCRC,Commercial banks,core_services,True,1,prior,,,Imputed: commercial banks
+256,DIMNRC,Other depository institutions and regulated investment companies,core_services,True,1,prior,,,Imputed: other depository
+257,DPENRC,Pension funds,core_services,True,1,prior,,,Imputed: pension funds
+259,DFEERC,Financial service charges and fees,core_services,True,1,cpi,CUUR0000SS68021,cpi,Checking account and other bank services (handbook)
+262,DDCERC,Exchange-listed equities,core_services,True,1,ppi,PCU5231--5231--,ppi,Securities brokerage
+263,DDCORC,Other direct commissions,core_services,True,1,ppi,PCU5231--5231--,ppi,
+265,DICVRC,Over-the-counter equity securities,core_services,True,1,ppi,PCU5231--5231--,ppi,
+266,DICORC,Other imputed commissions,core_services,True,1,ppi,PCU5231--5231--,ppi,
+267,DMUTRC,Mutual fund sales charges,core_services,True,1,ppi,PCU5231--5231--,ppi,
+268,DPMIRC,Portfolio management and investment advice services,core_services,True,1,ppi,PCU5239405239401|PCU5239405239402,ppi,Portfolio management + investment advice (handbook)
+269,DTRURC,"Trust, fiduciary, and custody activities",core_services,True,1,ppi,PCU5221105221103,ppi,Commercial bank trust services
+271,DLIFRC,Life insurance (110),core_services,True,1,prior,,,Life insurance: BEA input-cost index
+273,DFIPRC,Household insurance premiums and premium supplements,core_services,True,1,ppi,PCU5241265241262,ppi,Homeowners insurance
+274,DFIBRC,Less: Household insurance normal losses,core_services,True,-1,ppi,PCU5241265241262,ppi,Less: normal losses
+276,DMINRC,Medical care and hospitalization,core_services,True,1,ppi,PCU524114524114,ppi,Health insurance carriers
+277,DIINRC,Income loss,core_services,True,1,prior,,,Income loss insurance
+278,DPWCRC,Workers' compensation,core_services,True,1,prior,,,Workers' compensation
+279,DTINRC,Net motor vehicle and other transportation insurance (116),core_services,True,1,ppi,PCU5241265241261,ppi,Private passenger auto insurance
+283,DLOCRC,"Land-line telephone services, local charges",core_services,True,1,cpi,CUUR0000SEED04,cpi,Residential telephone
+284,DLDTRC,"Land-line telephone services, long-distance charges",core_services,True,1,cpi,CUUR0000SEED04,cpi,
+285,DCELRC,Cellular telephone services,core_services,True,1,cpi,CUUR0000SEED03,cpi,Wireless telephone
+287,DPSTRC,First-class postal service (by U.S. Postal Service),core_services,True,1,cpi,CUSR0000SEEC01,cpi,Postage
+288,DODSRC,Other delivery services (by non-U.S. postal facilities),core_services,True,1,cpi,CUSR0000SEEC02,cpi,Delivery services
+289,DINTRC,Internet access (72),core_services,True,1,cpi,CUSR0000SEEE03,cpi,Internet services
+292,DGEDRC,Proprietary and public higher education,core_services,True,1,cpi,CUSR0000SEEB01,cpi,College tuition
+293,DPEDRC,Nonprofit private higher education services to households,core_services,True,1,cpi,CUSR0000SEEB01,cpi,
+295,DESCRC,Elementary and secondary schools,core_services,True,1,cpi,CUSR0000SEEB02,cpi,Elementary and high school
+296,DNSCRC,Day care and nursery schools,core_services,True,1,cpi,CUSR0000SEEB03,cpi,Day care and preschool
+297,DVEDRC,Commercial and vocational schools (99),core_services,True,1,cpi,CUSR0000SEEB04,cpi,Technical and vocational
+299,DGALRC,Legal services,core_services,True,1,proxy,PCU5411--5411--,ppi,Handbook: CPI legal services — discontinued by BLS in Oct-2025
+301,DTAPRC,Tax preparation and other related services,core_services,True,1,cpi,CUSR0000SS68023,cpi,Tax preparation
+302,DGENRC,Employment agency services,core_services,True,1,ppi,PCU5613--5613--,ppi,Employment services
+303,DTHERC,Other personal business services,core_services,True,1,proxy,CUSR0000SEGD,cpi,Misc personal services
+304,DUNSRC,Labor organization dues,core_services,True,1,prior,,,Labor organization dues
+305,DAXSRC,Professional association dues,core_services,True,1,prior,,,Professional association dues
+306,DFUNRC,Funeral and burial services,core_services,True,1,cpi,CUSR0000SEGD02,cpi,Funeral expenses
+309,DBBBRC,Hairdressing salons and personal grooming establishments,core_services,True,1,cpi,CUUR0000SEGC01,cpi,Haircuts
+310,DMPCRC,Miscellaneous personal care services,core_services,True,1,cpi,CUUR0000SEGC,cpi,Personal care services
+312,DDRYRC,Laundry and drycleaning services,core_services,True,1,cpi,CUSR0000SEGD03,cpi,Laundry
+313,DLGRRC,"Clothing repair, rental, and alterations",core_services,True,1,cpi,CUUR0000SEGD04,cpi,Apparel services
+314,DSCLRC,Repair and hire of footwear,core_services,True,1,cpi,CUUR0000SEGD04,cpi,
+316,DCHCRC,Child care,core_services,True,1,cpi,CUSR0000SEEB03,cpi,Day care
+318,DELDRC,Homes for the elderly,core_services,True,1,proxy,CUSR0000SEMD02,cpi,Homes for the elderly
+319,DMENRC,Residential mental health and substance abuse,core_services,True,1,prior,,,
+320,DFAMRC,Individual and family services,core_services,True,1,prior,,,
+321,DVOCRC,Vocational rehabilitation services,core_services,True,1,prior,,,
+322,DCFORC,Community food and housing / emergency / other relief services,core_services,True,1,prior,,,
+323,DSIARC,"Other social assistance, not elsewere classified",core_services,True,1,prior,,,
+324,DSADRC,Social advocacy and civic and social organizations,core_services,True,1,prior,,,
+325,DRELRC,Religious organizations' services to households,core_services,True,1,prior,,,Religious organizations
+326,DGIVRC,Foundations and grantmaking and giving services to households,core_services,True,1,prior,,,Foundations
+328,DDMSRC,Domestic services,core_services,True,1,prior,,,Domestic services
+329,DMSERC,"Moving, storage, and freight services",core_services,True,1,cpi,CUSR0000SEHP03,cpi,"Moving, storage"
+330,DFRERC,"Repair of furniture, furnishings, and floor coverings",core_services,True,1,prior,,,Repair of furniture
+331,DERERC,Repair of household appliances,core_services,True,1,prior,,,Repair of appliances
+332,DMHSRC,Other household services,core_services,True,1,proxy,CUUR0000SEHP02,cpi,Gardening and lawncare
+335,DAFTRC,Passenger fares for foreign travel,core_services,True,1,proxy,CUSR0000SETG01,cpi,Airline fares
+336,DUSTRC,U.S. travel outside the United States,core_services,True,1,prior,,,Travel outside the U.S.
+337,DUSSRC,U.S. student expenditures,core_services,True,1,prior,,,Student expenditures abroad
+339,DFTURC,Foreign travel in the United States,core_services,True,-1,prior,,,Less: foreign travel in the U.S.
+340,DMEFRC,Medical expenditures of foreigners,core_services,True,-1,prior,,,Less: medical expenditures of foreigners
+341,DEFSRC,Expenditures of foreign students in the United States,core_services,True,-1,prior,,,Less: foreign students
+342,DNPIRC,Final consumption expenditures of nonprofit institutions serving households (NPISHs) (132),core_services,True,1,prior,,,NPISH final consumption (input costs)

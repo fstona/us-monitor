@@ -58,3 +58,35 @@ sem `data/`, sem `.env` (nenhuma chave dentro), sem este log.
 Testado numa pasta limpa: instalar (46 s) → abrir sem chaves (pede as chaves) → com chaves
 (pede "Refresh all data") → Refresh all (102/102 séries + 86 discursos) → painel completo,
 11 abas, 0 erros. O `.bat` não pôde ser executado aqui (sem Windows); só formato conferido.
+
+---
+
+# Nowcast do PCE — 18/10/2026
+
+Spec: `nowcast_pce_spec.md`. Pesquisa (concordância, validação, backtest) em `../us-monitor-lab/` — **não vai para o GitHub**.
+
+| Tipo | Arquivos |
+|---|---|
+| Novos (motor) | `src/ingest/bls.py`, `src/nowcast/{__init__,bridge,run,snapshots}.py` |
+| Novos (painel) | `src/dashboard/tabs/pce_nowcast.py` |
+| Novos (resultado do backtest) | `reference/nowcast_concordance.csv`, `nowcast_seasonal_factors.csv`, `nowcast_bias.csv`, `nowcast_backtest_metrics.csv` |
+| Alterados | `src/ingest/bea.py` (`fetch_table`), `src/dashboard/charts.py` (projeções pontilhadas; cor explícita por série), `src/dashboard/ui.py` (refresh da aba Inflation e "Refresh all" chamam o nowcast), `src/dashboard/tabs/inflation.py` (seção + projeções), `src/jobs/ingest.py`, `.env.example` (BLS_API_KEY, EIA_API_KEY), `CLAUDE.md`, `README.md` |
+| Dados locais | tabela `data/store/nowcast_runs.parquet`, `data/nowcast/snapshots/` |
+
+**Desfazer:** remover os arquivos novos e reverter os alterados pelo git (`git diff` mostra tudo; o commit anterior é o da bandeira/publicação).
+
+## Nowcast — trajetória por divulgação e modelos de linha (18/10, mais tarde)
+- `src/nowcast/run.py`: cada atualização reconstrói a trajetória do mês-alvo (último PCE → CPI/PPI na ordem real), modelos de linha, atualiza seus insumos da FRED, payroll entra na checagem de novidade.
+- `src/dashboard/tabs/pce_nowcast.py`: gráfico "nowcast após cada divulgação" com ± erro do backtest; valor publicado quando sair.
+- Novo `reference/nowcast_line_models.csv`; métricas e viés reexportados (core estágio 2: 6,7 → 6,3 bps).
+- Lab: `error_decomp.py`, `improvements.py`, `line_models.py`.
+
+## Eficiência dos downloads + painel mais limpo (18/10, noite)
+- `src/data.py`: `refresh` só baixa séries cuja data de atualização na FRED mudou; difusão do BEA só recalcula com PCE novo e de forma incremental (3 anos + histórico salvo — validado: diferença zero). Retorna `RefreshResult` (novas / sem novidade / falhas).
+- `src/ingest/bea.py`: cache de 10 min por tabela (difusão e nowcast compartilham o download); `recent_years`.
+- `src/store.py`: `has_series`; grava metadados mesmo sem dados novos.
+- `src/dashboard/ui.py`, `src/jobs/ingest.py`: uma única passada de atualização (aba + insumos do nowcast); nowcast com `refresh_inputs=False`.
+- `src/nowcast/run.py`: gasolina (GASREGW) vira série do store; tabela do BEA pedida com os mesmos anos da difusão.
+- `src/dashboard/tabs/pce_nowcast.py`: removida qualquer referência ao mês anterior (comparação com publicado e linha no gráfico).
+- `.gitignore`: `nowcast_pce_spec.md`.
+- Medido: clique na aba Inflation de ~64 chamadas FRED + tabela BEA completa → 27 checagens leves, 0 repetições; "Refresh all" 3m41 → 2m25.

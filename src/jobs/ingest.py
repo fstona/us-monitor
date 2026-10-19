@@ -12,14 +12,15 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 from src import config, data
 from src.jobs import fedspeak
+from src.nowcast import run as nowcast_run
 
 
 def run() -> list[str]:
-    failures = data.refresh([s.id for s in config.SERIES])
-    print(f"Series: {len(config.SERIES) - len(failures)}/{len(config.SERIES)} refreshed"
-          + (f"; failed (kept previous data): {failures}" if failures else ""))
+    res = data.refresh([s.id for s in config.SERIES] + nowcast_run.FRED_INPUTS)
+    print(res.summary())
     fedspeak.run()
-    return failures
+    print(nowcast_run.safe_update(refresh_inputs=False))
+    return res.failed
 
 
 if __name__ == "__main__":
